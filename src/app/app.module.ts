@@ -13,7 +13,7 @@ import { CompanyEditComponent } from './company/company-edit/company-edit.compon
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-// import { CompanyEffects } from './effects/company.effects';
+import { CompanyEffects } from './effects/company.effects';
 import { companyReducer } from './reducers/company.reducer';
 
 @NgModule({
@@ -29,9 +29,9 @@ import { companyReducer } from './reducers/company.reducer';
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    StoreModule.forRoot({companies: companyReducer}),
-    // EffectsModule.forRoot([CompanyEffects]),
-    // StoreDevtoolsModule.instrument({maxAge: 25})
+    StoreModule.forRoot({ companies: companyReducer }),
+    EffectsModule.forRoot([CompanyEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
   providers: [
     CompanyService,

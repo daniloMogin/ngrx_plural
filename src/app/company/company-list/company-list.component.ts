@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CompanyService } from '../company.service';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -10,6 +10,7 @@ import * as companyAcitons from './../../actions/company.actions';
     selector: 'app-company-list',
     templateUrl: './company-list.component.html',
     styleUrls: ['./company-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyListComponent implements OnInit {
 
@@ -26,8 +27,8 @@ export class CompanyListComponent implements OnInit {
         this.store.dispatch(new companyAcitons.LoadCompaniesAction());
     }
 
-    // deleteCompany(companyId: number) {
-    //     this.store.dispatch(new companyAcitons.DeleteCompanyAction(companyId));
-    // }
+    deleteCompany(companyId: number) {
+        this.store.dispatch(new companyAcitons.DeleteCompanyAction(companyId));
+    }
 
 }
